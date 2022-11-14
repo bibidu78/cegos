@@ -1,0 +1,136 @@
+.Block-valeur-ajoutee {
+    font-family: 'Titillium', sans-serif;
+    color: #222222;
+    &_heading {
+        padding-block: 1rem;
+        font-size: 2.2rem;
+        font-weight: bold;
+        text-align: center;
+        color: #28253D;
+    }
+    &_para {
+        padding-block: 1rem 2rem;
+        text-align: center;
+    }
+    &_cards {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        color: #fff;
+        @include media-break-up(690) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+    &_card {
+        position: relative;
+        @include media-break-up(690) {
+            flex: 1 1 calc(100% / 3 - 30px);
+            max-width: 50%;
+        }
+        &_one {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            line-height: 1.5rem;
+            background-image: url("https://picsum.photos/id/177/1200");
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: rotateY(0deg);
+            transition: 0.5s;
+            & > div {
+                position: absolute;
+                bottom: 0;
+                padding: 1rem 4rem 1rem 1rem;
+                @include media-break-up(690) {
+                    padding: 2rem 4rem 2rem 2rem;
+                }
+                & h3 {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                }
+            }
+            &--two {
+                position: relative;
+                top: 0;
+                transform: rotateY(180deg);
+                z-index: -1;
+                padding: 1rem 1rem 1rem 2rem;
+                line-height: 1.5rem;
+                background-color: #F4F4F4;
+                color: #222222;
+                background-image: none;
+                @include media-break-up(690) {
+                    padding: 0;
+                }
+                & > div {
+                    position: static;
+                    & h3 {
+                        @include media-break-up(690) {
+                            padding-inline-end: 3rem;
+                        }
+                    }
+                }
+                & h3 {
+                    text-align: left;
+                    color: #222222;
+                }
+                & p {
+                    text-align: left;
+                }
+                &--para {
+                    padding-block: 1rem;
+                    &--weight {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+    &_btn {
+        position: absolute;
+        right: 15px;
+        bottom: 50px;
+        height: 30px;
+        width: 30px;
+        background-color: #C72B18;
+        border-radius: 100%;
+        cursor: pointer;
+        &::before, &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%);
+            height: 2px;
+            width: 12px;
+            background-color: #fff;
+        }
+        &::after {
+            transform: translate(-50%) rotate(90deg);
+        }
+        &--two {
+            top: 30px;
+            &::after {
+                content: none;
+            }
+        }
+    }
+}
+
+input {
+    display: none;
+    &:checked ~ {
+        & .Block-valeur-ajoutee_card_one {
+            transform: rotateY(180deg);
+            z-index: -1;
+        }
+        & .Block-valeur-ajoutee_card_one--two {
+            transform: rotateY(0deg);
+            z-index: 1;
+        }
+    }
+}

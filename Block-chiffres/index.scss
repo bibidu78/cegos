@@ -1,0 +1,55 @@
+.Block-chiffres {
+    font-family: 'Titillium',sans-serif;
+    &_heading {
+        font-size: 2.2rem;
+        font-weight: bold;
+        text-align: center;
+        margin-block: 1rem;
+        color: #28253D;
+        &--small {
+            font-size: 1.5rem;
+        }
+    }
+    &_para {
+        text-align: center;
+        line-height: 1.2rem;
+        color: #222222;
+        &--last {
+            margin-block-start: 1rem;
+        }
+    }
+    &_stats {
+        margin-block-start: 2rem;
+        color: 222222;
+        @include media-break-up(690) {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            row-gap: 15px;
+        }
+    }        
+    &_stat {
+        text-align: center;
+        background-color: #F4F4F4;
+        @include media-break-up(690) {
+            flex: 1 1 20%;
+            max-width: 20%;
+        }
+        &_img {
+            padding-block: 1rem;
+        }
+        &--blue {
+            background-color: #28253D;
+            color: #fff;
+        }
+        &_nbr {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        &_para {
+            padding-block-end: 1rem;
+            text-align: center;
+        }
+    }
+}

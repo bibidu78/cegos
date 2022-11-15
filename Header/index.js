@@ -38,3 +38,20 @@ childMenu.map(item => {
         menu.classList.toggle('active');
     });
 });
+
+const [header] = selector(".header");
+const [Header] = selector(".Header");
+const [img] = selector(".Header_img");
+const [Header_top] = selector(".Header_top");
+
+window.onscroll = function () {
+    if (window.scrollY >= 150) {
+        Header.classList.toggle("desactive");
+        menu.classList.toggle('desactive');
+        img.classList.toggle("desactive");
+        header.style.position = "fixed";
+        header.style.top = "0";
+        header.style.zIndex = "2";
+        Header_top.style.top = "initial";
+    }
+}

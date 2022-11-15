@@ -1,7 +1,7 @@
-<div class="Header">
+<div class="Header desactive">
     <input type="checkbox" id="search">
     <input type="text" placeholder="Rechercher une formation" class="Header_search_input">
-    <a href="#" class="Header_img">
+    <a href="#" class="Header_img desactive">
         <img class="Header_img_mobile" src="https://www.cegos.fr/vendor/laravel-theme-inter/dirAssets253c850/media/img/logo.png" alt="Logo de Cegos">
         <img class="Header_img_desktop" src="https://www.cegos.fr/vendor/laravel-theme-inter/dirAssets253c850/media/img/logo-2020.png" alt="Logo de Cegos">
     </a>
@@ -47,7 +47,7 @@
         </label>
         <label class="Header_open Header_cross" for="btn"></label>
     </div>
-    <nav class="Header_menu">
+    <nav class="Header_menu desactive">
         <div class="Header_menu_item Header_menu_item--formation">Domaines de formation
             <div class="Header_menu_sub Header_menu_sub--formation">
                 

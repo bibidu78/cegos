@@ -2,13 +2,6 @@
     position: relative;
     font-family: 'Titillium',sans-serif;
     width: 100%;
-    @include media-break-up(980) {
-        padding-inline: calc(50% - (#{$container-width + px} / 2));
-        background-color: #28253d;
-        &::after {
-            bottom: 0;
-        }
-    }
     &::after {
         content: "";
         display: block;
@@ -19,40 +12,30 @@
         height: 4px;
         background: url("https://www.cegos.fr/vendor/laravel-theme-inter/dirAssets253c850/media/img/webp/frise.png.webp");
     }
+    @include media-break-up(980) {
+        padding-inline: calc(50% - (#{$container-width + px} / 2));
+        background-color: #28253d;
+    }
 }
 
 .Header {
     display: flex;
     align-items: center;
+    position: relative;
     width: 100%;
     padding-inline: calc(50% - ((100vw - #{$multiple} * #{$step + px}) / 2));
     background-color: #28253d;
     color: #fff;
-    @include media-break-up(980) {
-        position: relative;
-        justify-content: space-between;
-        align-items: flex-end;
+    &.desactive {
+        @include media-break-up(980) {
+            justify-content: space-between;
+            align-items: flex-end;
+        }
     }
     &_img {
         max-width: 50px;
         padding-block: 0.5rem;
         cursor: pointer;
-        @include media-break-up(980) {
-            position: relative;
-            max-width: 130px;
-            margin-inline-start: 2rem;
-            padding-block: 1rem 2rem;
-            &::after {
-                content: "Leader international de la formation professionnelle et continue";
-                display: block;
-                width: 250px;
-                position: absolute;
-                right: 0;
-                top: 50%;
-                font-weight: 600;
-                transform: translate(100%, -50%);
-            }
-        }
         &_mobile {
             @include media-break-up(980) {
                 display: none;
@@ -62,6 +45,24 @@
             display: none;
             @include media-break-up(980) {
                 display: block;
+            }
+        }
+        &.desactive {
+            @include media-break-up(980) {
+                position: relative;
+                max-width: 130px;
+                margin-inline-start: 2rem;
+                padding-block: 1rem 2rem;
+                &::after {
+                    content: "Leader international de la formation professionnelle et continue";
+                    display: block;
+                    width: 250px;
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    font-weight: 600;
+                    transform: translate(100%, -50%);
+                }
             }
         }
     }
@@ -466,20 +467,6 @@
                 transform: none
             }
         }
-        @include media-break-up(980) {
-            display: flex;
-            align-items: center;
-            position: static;
-            left: auto;
-            top: auto;
-            width: auto;
-            margin-inline-end: 2rem;
-            background-color: #28253d;
-            & > * {
-                flex: 1;
-                min-width: fit-content;
-            }
-        }
         &_item, &_link {
             display: block;
             padding: 1rem;
@@ -601,6 +588,22 @@
                 } 
                 & p {
                     display: none;
+                }
+            }
+        }
+        &.desactive {
+            @include media-break-up(980) {
+                display: flex;
+                align-items: center;
+                position: static;
+                left: auto;
+                top: auto;
+                width: auto;
+                margin-inline-end: 2rem;
+                background-color: #28253d;
+                & > * {
+                    flex: 1;
+                    min-width: fit-content;
                 }
             }
         }

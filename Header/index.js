@@ -11,6 +11,7 @@ const [main] = selector("main");
 function translate(e) {
     main.classList.toggle('active');
     body.classList.toggle('active');
+    menu.parentNode.classList.toggle('active');
 }
 
 btn.map(item => item.addEventListener("click", translate));
@@ -35,23 +36,7 @@ childMenu.map(item => {
             subMenu.insertBefore(elementP, subMenu.children[0]);
         }
         subMenu.classList.toggle('active');
-        menu.classList.toggle('active');
+        menu.querySelector('.Header_inner').classList.toggle('active');
     });
 });
 
-const [header] = selector(".header");
-const [Header] = selector(".Header");
-const [img] = selector(".Header_img");
-const [Header_top] = selector(".Header_top");
-
-window.onscroll = function () {
-    if (window.scrollY >= 150) {
-        Header.classList.toggle("desactive");
-        menu.classList.toggle('desactive');
-        img.classList.toggle("desactive");
-        header.style.position = "fixed";
-        header.style.top = "0";
-        header.style.zIndex = "2";
-        Header_top.style.top = "initial";
-    }
-}

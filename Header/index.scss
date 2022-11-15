@@ -2,6 +2,19 @@
     position: relative;
     font-family: 'Titillium',sans-serif;
     width: 100%;
+    @include media-break-down(980) {
+        position: sticky;
+        top:0;
+        z-index: 999;
+    }
+
+    @include media-break-up(980) {
+        padding-inline: calc(50% - (#{$container-width + px} / 2));
+        background-color: #28253d;
+        &::after {
+            bottom: 0;
+        }
+    }
     &::after {
         content: "";
         display: block;
@@ -12,30 +25,40 @@
         height: 4px;
         background: url("https://www.cegos.fr/vendor/laravel-theme-inter/dirAssets253c850/media/img/webp/frise.png.webp");
     }
-    @include media-break-up(980) {
-        padding-inline: calc(50% - (#{$container-width + px} / 2));
-        background-color: #28253d;
-    }
 }
 
 .Header {
     display: flex;
     align-items: center;
-    position: relative;
     width: 100%;
     padding-inline: calc(50% - ((100vw - #{$multiple} * #{$step + px}) / 2));
     background-color: #28253d;
     color: #fff;
-    &.desactive {
-        @include media-break-up(980) {
-            justify-content: space-between;
-            align-items: flex-end;
-        }
+    @include media-break-up(980) {
+        position: relative;
+        justify-content: space-between;
+        align-items: flex-end;
     }
     &_img {
         max-width: 50px;
         padding-block: 0.5rem;
         cursor: pointer;
+        @include media-break-up(980) {
+            position: relative;
+            max-width: 130px;
+            margin-inline-start: 2rem;
+            padding-block: 1rem 2rem;
+            &::after {
+                content: "Leader international de la formation professionnelle et continue";
+                display: block;
+                width: 250px;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                font-weight: 600;
+                transform: translate(100%, -50%);
+            }
+        }
         &_mobile {
             @include media-break-up(980) {
                 display: none;
@@ -45,24 +68,6 @@
             display: none;
             @include media-break-up(980) {
                 display: block;
-            }
-        }
-        &.desactive {
-            @include media-break-up(980) {
-                position: relative;
-                max-width: 130px;
-                margin-inline-start: 2rem;
-                padding-block: 1rem 2rem;
-                &::after {
-                    content: "Leader international de la formation professionnelle et continue";
-                    display: block;
-                    width: 250px;
-                    position: absolute;
-                    right: 0;
-                    top: 50%;
-                    font-weight: 600;
-                    transform: translate(100%, -50%);
-                }
             }
         }
     }
@@ -451,6 +456,15 @@
     &_bar {
         height: 4px;
     }
+    &_inner {
+        height: 100%;
+        transition: .3s;
+        @include media-break-down(980) {
+            &.active {
+                transform: translateX(-272px);
+            }
+        }
+    }
     &_menu { 
         position: fixed;
         top: 70px;
@@ -460,11 +474,31 @@
         background-color: #393557;
         color: #fff;
         font-weight: bold;
-        transition: 0.3s;
-        &.active {
-            transform: translateX(-272px);
-            @include media-break-up(980) {
-                transform: none
+        transition: transform 0.3s;
+        overflow: hidden;
+        @include media-break-down(980) {
+            transform: translateX(-100%);
+        }
+        // &.active {
+        //     transform: translateX(-272px);
+        //     @include media-break-up(980) {
+        //         transform: none
+        //     }
+        // }
+        @include media-break-up(980) {
+            position: static;
+            left: auto;
+            top: auto;
+            width: auto;
+            margin-inline-end: 2rem;
+            background-color: #28253d;
+            & > .Header_inner  {
+                align-items: center;
+                display: flex;
+                & > * {
+                    flex: 1;
+                    min-width: fit-content;
+                }
             }
         }
         &_item, &_link {
@@ -472,7 +506,6 @@
             padding: 1rem;
             margin: 0;
             cursor: pointer;
-            transition: 0.3s;
             &::after {
                 content: "\e909";
                 position: absolute;
@@ -543,6 +576,9 @@
                 padding-inline: 0.6rem;
                 margin: 0;
                 line-height: 2.8rem;
+                position: sticky;
+                top: 0;
+                background: inherit;
                 &::before {
                     content: "\e908";
                     position: relative;
@@ -591,21 +627,10 @@
                 }
             }
         }
-        &.desactive {
-            @include media-break-up(980) {
-                display: flex;
-                align-items: center;
-                position: static;
-                left: auto;
-                top: auto;
-                width: auto;
-                margin-inline-end: 2rem;
-                background-color: #28253d;
-                & > * {
-                    flex: 1;
-                    min-width: fit-content;
-                }
-            }
+    }
+    &.active {
+        [class="Header_menu"] {
+            transform: translateX(0);
         }
     }
     &_logo {

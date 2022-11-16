@@ -3,10 +3,11 @@ function selector(element, root) {
     return [...select.querySelectorAll(element)];
 };
 
-const [body] = selector("body");
+const [body,header] = selector("body,header");
 const btn = selector(".Header_open");
 const [menu] = selector(".Header_menu");
 const [main] = selector("main");
+console.log(selector("body,header"));
 
 function translate(e) {
     main.classList.toggle('active');
@@ -39,4 +40,18 @@ childMenu.map(item => {
         menu.querySelector('.Header_inner').classList.toggle('active');
     });
 });
+const {height} = header.getBoundingClientRect();
 
+
+window.addEventListener('scroll', e => {
+    if(window.scrollY > height) {
+        header.style.position = "sticky";
+        header.style.zIndex = "30";
+        header.style.top = "0";
+        header.classList.add('sticky');
+    } else {
+        header.style.position = "relative";
+        header.classList.contains('sticky') && (header.style.top = window.scrollY +"px");
+        window.scrollY === 0 && (header.classList.remove('sticky'));
+    }
+})

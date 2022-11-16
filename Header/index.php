@@ -1,6 +1,10 @@
 <div class="Header">
-    <input type="checkbox" id="search">
-    <input type="text" placeholder="Rechercher une formation" class="Header_search_input">
+    <form action="">
+        <input type="checkbox" id="search">
+        <input type="text" placeholder="Rechercher une formation" class="Header_search_input">
+        <input type="text" id="date"> <label for="date">Rechercher par date</label>
+        <input type="submit">
+    </form>
     <a href="#" class="Header_img">
         <img class="Header_img_mobile" src="https://www.cegos.fr/vendor/laravel-theme-inter/dirAssets253c850/media/img/logo.png" alt="Logo de Cegos">
         <img class="Header_img_desktop" src="https://www.cegos.fr/vendor/laravel-theme-inter/dirAssets253c850/media/img/logo-2020.png" alt="Logo de Cegos">

@@ -2,17 +2,71 @@
     position: relative;
     font-family: 'Titillium',sans-serif;
     width: 100%;
-    @include media-break-down(980) {
-        position: sticky;
-        top:0;
-        z-index: 999;
-    }
-
-    @include media-break-up(980) {
-        padding-inline: calc(50% - (#{$container-width + px} / 2));
-        background-color: #28253d;
-        &::after {
-            bottom: 0;
+    &.sticky {
+        & .Header {
+            align-items: center;
+            & input[id="search"]:checked ~ form {
+                display: block;
+                width: 100%;
+            }
+            &_img {
+                max-width: 50px;
+                margin-inline-start: 3rem;
+                padding-block: 1rem;
+                &::after {
+                    display: none;
+                }
+                &_mobile {
+                    display: block;
+                }
+                &_desktop {
+                    display: none;
+                }
+            }
+            &_top {
+                position: static;
+            }
+            &_tel {
+                display: none;
+            }
+            &_search {
+                display: block;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #fff2;
+                &::before {
+                    content: "Rechercher une formation";
+                    display: inline-block;
+                    padding: 0.5rem 4rem 0.5rem 0.5rem;
+                    font-family: inherit;
+                }
+                &::after {
+                    content: "\e947";
+                    font-family: "icons";
+                    margin: 0.5rem;
+                }
+            }
+            &_open {
+                display: block;
+                position: absolute;
+                left: 0;
+                margin-inline: 0;
+            }
+            &_cross {
+                display: none;
+            }
+            & input[id="btn"]:checked ~ {
+                & .Header_open {
+                 display: none;
+                }
+                & .Header_cross {
+                 display: block;
+                }
+             }
+            &_menu {
+                display: none;
+            }
         }
     }
     &::after {
@@ -21,9 +75,15 @@
         position: absolute;
         left: 0;
         right: 0;
-        bottom: -4px;
         height: 4px;
         background: url("https://www.cegos.fr/vendor/laravel-theme-inter/dirAssets253c850/media/img/webp/frise.png.webp");
+    }
+    @include media-break-up(980) {
+        position: sticky;
+        top:0;
+        z-index: 999;
+        padding-inline: calc(50% - (#{$container-width + px} / 2));
+        background-color: #28253d;
     }
 }
 
@@ -38,6 +98,13 @@
         position: relative;
         justify-content: space-between;
         align-items: flex-end;
+    }
+    & > form {
+        display: contents;
+        background-color: #28253d;
+        & input[id="date"], & label, & input[type="submit"] {
+            display: none;
+        }
     }
     &_img {
         max-width: 50px;
@@ -476,15 +543,7 @@
         font-weight: bold;
         transition: transform 0.3s;
         overflow: hidden;
-        @include media-break-down(980) {
-            transform: translateX(-100%);
-        }
-        // &.active {
-        //     transform: translateX(-272px);
-        //     @include media-break-up(980) {
-        //         transform: none
-        //     }
-        // }
+        transform: translateX(-100%);
         @include media-break-up(980) {
             position: static;
             left: auto;
@@ -492,6 +551,7 @@
             width: auto;
             margin-inline-end: 2rem;
             background-color: #28253d;
+            transform: none;
             & > .Header_inner  {
                 align-items: center;
                 display: flex;

@@ -949,9 +949,9 @@ section:nth-of-type(1) {
                 }
             }
             &_inner {
+                display: block;
                 height: 100%;
                 transition: .3s;
-                display: block;
                 &.active {
                     transform: translateX(-272px);
                 }
@@ -972,15 +972,13 @@ section:nth-of-type(1) {
                     display: block;
                     padding: 1rem;
                     margin: 0;
-                    position: relative;
                     cursor: pointer;
                     &::after {
-                        display: block;
+                        display: initial;
+                        content: "\e909";
                         position: absolute;
                         right: 1rem;
                         font-family: "icons";
-                        top: 50%;
-                        transform: translateY(-50%);
                     }
                     &::first-letter {
                         text-transform: capitalize;
@@ -988,20 +986,18 @@ section:nth-of-type(1) {
                     &:hover {
                         background-color: #fff5;
                         transition: 0.3s;
-                        
                     }
                 }
                 &_link {
                     display: block;
-                    &::after {
-                        display: block;
-                    }
-                        padding: 1rem;
-                        color: inherit;
-                     background-color: unset;
-                        font-weight: 600;
+                    padding: 1rem; 
+                    color: #fff;
+                    background-color: #393557;
+                    font-weight: 0;
                     border-radius: 0;
-
+                    &::after {
+                        display: none;
+                    }
                 }
                 &_sub {
                     display: block;
@@ -1014,6 +1010,9 @@ section:nth-of-type(1) {
                     background-color: #393557;
                     overflow: auto;
                     z-index: 0;
+                    & div {
+                        padding: 0;
+                    }
                     & p, & a {
                         &:hover {
                             background-color: #fff5;
@@ -1021,6 +1020,7 @@ section:nth-of-type(1) {
                         }
                     }
                     & p {
+                        display: block;
                         padding-inline: 0.6rem;
                         margin: 0;
                         line-height: 2.8rem;
@@ -1028,6 +1028,7 @@ section:nth-of-type(1) {
                         top: 0;
                         background: inherit;
                         &::before {
+                            display: initial;
                             content: "\e908";
                             position: relative;
                             margin-inline-end: 1rem;
@@ -1051,14 +1052,13 @@ section:nth-of-type(1) {
                             z-index: 10;
                         }
                     }
-                   
                 }
             }
             &.active {
                 [class="Header_menu"] {
                     transform: translateX(0);
                 }
-            }            
+            }       
         }
         input {
             display: none;

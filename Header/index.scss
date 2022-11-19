@@ -1,16 +1,35 @@
-
-
 .Header {
+    position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    padding-inline: calc(50% - ((100vw - #{$multiple} * #{$step + px}) / 2));
-    background-color: #28253d;
     color: #fff;
     @include media-break-up(980) {
-        position: relative;
         justify-content: space-between;
         align-items: flex-end;
+    }
+    & > form {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 50px;
+        background-color: #fff;
+        & input {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            border: 1px solid #0002;
+            &::after {
+                content: "\e92a";
+                font-family: "icons";
+                color: #d20000;
+                font-size: 17px;
+            }
+        }
     }
     &_img {
         max-width: 50px;
@@ -19,7 +38,6 @@
         @include media-break-up(980) {
             position: relative;
             max-width: 130px;
-            margin-inline-start: 2rem;
             padding-block: 1rem 2rem;
             &::after {
                 content: "Leader international de la formation professionnelle et continue";
@@ -60,12 +78,12 @@
         margin-inline-start: auto;
         font-size: 20px;
         @include media-break-up(980) {
-            margin-inline: auto 2rem;
             font-size: 15px;
         }
         & > * {
             margin-inline: 0.4rem;
             @include media-break-up(980) {
+                margin-inline: 0;
                 &::after {
                     margin-inline: 0.5rem 1rem;
                 }
@@ -102,21 +120,6 @@
         &::before {
             content: "\e947";
             font-family: "icons";
-        }
-        &_input {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 50px;
-            background-color: #fff;
-            &::after {
-                content: "\e92a";
-                font-family: "icons";
-                color: #d20000;
-                font-size: 17px;
-            }
         }
         @include media-break-up(980) {
             display: none;
@@ -296,6 +299,9 @@
         }
         &_box {
             display: none;
+            @include media-break-up(980) {
+                visibility: hidden;
+            } 
         }
         @include media-break-up(980) {
             font-size: 20px;
@@ -303,8 +309,9 @@
                 position: absolute;
                 top: calc(30px + 1rem);
                 left: 50%;
-                width: 295px;
+                width: 296px;
                 height: 434px;
+                border: 1px solid #0005;
                 transform: translateX(-50%);
                 background-color: #fff;
                 z-index: 2;
@@ -367,7 +374,8 @@
                 }
             }
             &:hover .Header_purchase_box {
-                display: block;
+                display: initial;
+                visibility: visible;
                 transition: 0.3s;
             }
         }
@@ -375,43 +383,31 @@
     &_open {
         position: relative;
         height: 21px;
-        width: 40px;
+        width: 30px;
         margin-inline-start: 1rem;
         background-color: #28253d;
         border: none;
         z-index: 1;
         cursor: pointer;
-        @include media-break-up(980) {
-            display: none;
+        & div {
+            display: block;
+            position: absolute;
+            right: 0;
+            height: 2px;
+            width: 30px;
+            background-color: #fff4;
+            border-radius: 2px;
         }
         &_top {
-            position: absolute;
-            display: block;
             top: 0;
-            height: 2px;
-            width: 30px;
-            background-color: #fff4;
-            border-radius: 2px;
         }
         &_middle {
-            position: absolute;
             top: 50%;
-            display: block;
-            height: 2px;
-            width: 30px;
-            background-color: #fff9;
-            border-radius: 2px;
         }
         &_bottom {
-            position: absolute;
             bottom: 0;
-            display: block;
-            height: 2px;
-            width: 30px;
-            background-color: #fff4;
-            border-radius: 2px;
         }
-        &::before, &::after {
+        @include media-break-up(980) {
             display: none;
         }
     }
@@ -467,7 +463,6 @@
             left: auto;
             top: auto;
             width: auto;
-            margin-inline-end: 2rem;
             background-color: #28253d;
             & > .Header_inner  {
                 align-items: center;
@@ -707,13 +702,12 @@ input {
         & .Header_cross {
             display: block;
         }
-        & .Header_search_input {
+        & form {
             display: block;
             top: 100%;
-            padding-inline-start: 1rem;
-            border: none;
-            caret-color: auto;
-            z-index: 2;
+        }
+        & form input {
+            display: inline-block;
         }
     }
 }
@@ -740,8 +734,10 @@ section:nth-of-type(1) {
 
 .header {
     position: relative;
+    padding-inline: calc(50% - (100vw - 20px * 2) / 2);
     font-family: 'Titillium',sans-serif;
     width: 100%;
+    background-color: #28253d;
     @include media-break-down(980) {
         position: sticky;
         top:0;
@@ -749,11 +745,14 @@ section:nth-of-type(1) {
     }
 
     @include media-break-up(980) {
-        padding-inline: calc(50% - (#{$container-width + px} / 2));
+        padding-inline: calc(50% - (100vw - 20px * 2 * 2) / 2 + 3vw);
         background-color: #28253d;
         &::after {
             bottom: 0;
         }
+    }
+    @include media-break-up(1325) {
+        padding-inline: calc(50% - 1165px / 2);
     }
     &::after {
         content: "";
@@ -763,10 +762,18 @@ section:nth-of-type(1) {
         right: 0;
         bottom: -4px;
         height: 4px;
-        background: url("https://www.cegos.fr/vendor/laravel-theme-inter/dirAssets253c850/media/img/webp/frise.png.webp");
+        background: url("https://www.cegos.fr/vendor/laravel-theme-inter/dirAssets8620b9f/media/img/webp/frise.png.webp");
     }
     &.sticky {
         .Header {
+            @include media-break-up(980) {
+                align-items: center;
+            }
+            & > form {
+                @include media-break-up(980) {
+                    background-color: #28253d;
+                }
+            }
             &_img {
                 max-width: 50px;
                 padding-block: 0.5rem;
@@ -780,6 +787,39 @@ section:nth-of-type(1) {
                 &_desktop {
                     display: none;
                 }
+                @include media-break-up(980) {
+                    margin-inline-start: 3rem;
+                }
+            }
+            &_top {
+                @include media-break-up(980) {
+                    position: static;
+                }
+            }
+            &_tel {
+                @include media-break-up(980) {
+                    display: none;
+                }
+            } 
+            &_search {
+                @include media-break-up(980) {
+                    display: block;
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: #fff2;
+                    &::before {
+                        content: "Rechercher une formation";
+                        display: inline-block;
+                        padding: 0.5rem 3rem 0.5rem 0.5rem;
+                        font-family: inherit;
+                    }
+                    &::after {
+                        content: "\e947";
+                        margin-inline: 0.5rem;
+                        font-family: "icons";
+                    }
+                }
             }
             &_client {
                 @include media-break-up(980) {
@@ -789,142 +829,47 @@ section:nth-of-type(1) {
                 }
             }
             &_purchase {
-                position: relative;
-                font-size: 25px;
-                cursor: pointer;
-                &::before {
-                    content: "\e94a";
-                    font-family: "icons";
-                }
-                &_circle {
-                    position: absolute;
-                    top: 3px;
-                    right: -2px;
-                    background-color: #d20000;
-                    width: 15px;
-                    height: 15px;
-                    border-radius: 100%;
-                    @include media-break-up(980) {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        top: 0;
-                        right: -6px;
-                        width: 12px;
-                        height: 12px;
-                        &::after {
-                            content: "0";
-                            position: absolute;
-                            margin: 0;
-                            font-size: 12px;
-                        }
-                    }
-                }
-                &_box {
-                    display: none;
-                }
                 @include media-break-up(980) {
-                    font-size: 20px;
                     &_box {
-                        position: absolute;
-                        left: 50%;
-                        width: 295px;
-                        height: 434px;
-                        transform: translateX(-50%);
-                        background-color: #fff;
-                        z-index: 2;
-                        & p {
-                            padding: 1rem;
-                            font-size: 1rem;
-                            font-weight: bold;
-                            color: #28253d;
-                            &::after {
-                                content: "";
-                                display: block;
-                                height: 1px;
-                                background-color: #28253d;
-                            }
-                        }
-                        & > div {
-                            display: flex;
-                            justify-content: space-evenly;
-                            align-items: flex-end;
-                            position: absolute;
-                            left: 0;
-                            right: 0;
-                            bottom: 1rem;
-                            font-weight: bold;
-                        }
                         & input, & a {
                             display: block;
                             width: calc(100% / 2 - 1rem);
-                            padding-block: 0.5rem;
-                            background-color: #28253d;
-                            font-size: 0.7rem;
-                            border-radius: 25px;
-                            border: 1px solid;
-                            &:hover {
-                                color: #28253d;
-                                background-color: #fff;
-                            }
                         }
-                        & a {
-                            background-color: #d20000;
-                            text-align: center;
-                            &:hover {
-                                color: #d20000;
-                            }
-                            &::after {
-                                content: "\e90b";
-                                font-family: "icons";
-                            }
-                        }
-                    }
-                    &:hover .Header_purchase_box {
-                        display: block;
-                        transition: 0.3s;
                     }
                 }
             }
             &_open {
-                display: block;
                 position: relative;
                 height: 21px;
-                width: 40px;
+                width: 30px;
                 margin-inline-start: 1rem;
                 background-color: #28253d;
                 border: none;
                 z-index: 1;
                 cursor: pointer;
-                &_top {
-                    position: absolute;
+                & div {
                     display: block;
-                    top: 0;
+                    position: absolute;
+                    right: 0;
                     height: 2px;
                     width: 30px;
                     background-color: #fff4;
                     border-radius: 2px;
+                }
+                &_top {
+                    top: 0;
                 }
                 &_middle {
-                    position: absolute;
                     top: 50%;
-                    display: block;
-                    height: 2px;
-                    width: 30px;
-                    background-color: #fff9;
-                    border-radius: 2px;
                 }
                 &_bottom {
-                    position: absolute;
                     bottom: 0;
-                    display: block;
-                    height: 2px;
-                    width: 30px;
-                    background-color: #fff4;
-                    border-radius: 2px;
                 }
-                &::before, &::after {
-                    display: none;
+                @include media-break-up(980) {
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    margin-inline: 0;
                 }
             }
             &_cross {
@@ -1058,7 +1003,12 @@ section:nth-of-type(1) {
                 [class="Header_menu"] {
                     transform: translateX(0);
                 }
-            }       
+            }  
+            &_logo {
+                @include media-break-up(989) {
+                    display: block;
+                }
+            }     
         }
         input {
             display: none;
@@ -1069,13 +1019,8 @@ section:nth-of-type(1) {
                 & .Header_cross {
                     display: block;
                 }
-                & .Header_search_input {
-                    display: block;
-                    top: 100%;
-                    padding-inline-start: 1rem;
-                    border: none;
-                    caret-color: auto;
-                    z-index: 2;
+                & form, form input {
+                    display: inline-block;
                 }
             }
         }

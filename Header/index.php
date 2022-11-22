@@ -1,5 +1,4 @@
 <input type="checkbox" id="search">
-<input type="checkbox" id="form">
 <form action="">
     <div class="form_div1">
         <input type="search" placeholder="Rechercher une formation" class="Header_search_input">
@@ -8,7 +7,7 @@
         <input type="text" placeholder="Rechercher par date">
     </div>
     <input type="submit" value="Recherche">
-    <label for="form"></label>
+    <label for="search"></label>
 </form>
 
 <div class="Header">
